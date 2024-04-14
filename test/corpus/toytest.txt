@@ -1,0 +1,135 @@
+==================
+Identifier
+==================
+
+abc; def_123
+
+---
+
+(source_file
+  exprs: (identifier)
+  exprs: (identifier))
+
+==================
+Identifier 2
+==================
+
+abc_123
+
+---
+
+(source_file
+  exprs: (identifier))
+
+==================
+Integer
+==================
+
+123
+
+---
+
+(source_file
+  (integer))
+
+==================
+Attribute
+==================
+
+abc.d
+
+---
+
+(source_file
+  exprs: (attribute
+    value: (identifier)
+    name: (identifier)))
+
+==================
+Subscript
+==================
+
+abc[1]
+
+---
+
+(source_file
+  exprs: (subscript
+    value: (identifier)
+    index: (integer)))
+
+==================
+Call
+==================
+
+a(); a(b); a(b, 2)
+
+---
+
+(source_file
+  exprs: (call
+    value: (identifier))
+  exprs: (call
+    value: (identifier)
+    arguments: (identifier))
+  exprs: (call
+    value: (identifier)
+    arguments: (identifier)
+    arguments: (integer)))
+
+==================
+List
+==================
+
+[]; [a]; [a, 2]
+
+---
+
+(source_file
+  exprs: (list)
+  exprs: (list
+    elements: (identifier))
+  exprs: (list
+    elements: (identifier)
+    elements: (integer)))
+
+==================
+Binary op and paren
+==================
+
+a * 1; a + 1; a * 2 + c; a + 2 * c; (a + 2) * c
+
+---
+
+(source_file
+  exprs: (bin_op
+    left: (identifier)
+    operator: (op_mul)
+    right: (integer))
+  exprs: (bin_op
+    left: (identifier)
+    operator: (op_plus)
+    right: (integer))
+  exprs: (bin_op
+    left: (bin_op
+      left: (identifier)
+      operator: (op_mul)
+      right: (integer))
+    operator: (op_plus)
+    right: (identifier))
+  exprs: (bin_op
+    left: (identifier)
+    operator: (op_plus)
+    right: (bin_op
+      left: (integer)
+      operator: (op_mul)
+      right: (identifier)))
+  exprs: (bin_op
+    left: (paren_expr
+      value: (bin_op
+        left: (identifier)
+        operator: (op_plus)
+        right: (integer)))
+    operator: (op_mul)
+    right: (identifier)))
+

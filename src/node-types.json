@@ -28,21 +28,11 @@
         "named": true
       },
       {
-        "type": "subscript",
-        "named": true
-      }
-    ]
-  },
-  {
-    "type": "operator",
-    "named": true,
-    "subtypes": [
-      {
-        "type": "op_mul",
+        "type": "paren_expr",
         "named": true
       },
       {
-        "type": "op_plus",
+        "type": "subscript",
         "named": true
       }
     ]
@@ -92,7 +82,11 @@
         "required": true,
         "types": [
           {
-            "type": "operator",
+            "type": "op_mul",
+            "named": true
+          },
+          {
+            "type": "op_plus",
             "named": true
           }
         ]
@@ -123,7 +117,7 @@
           }
         ]
       },
-      "function": {
+      "value": {
         "multiple": false,
         "required": true,
         "types": [
@@ -152,9 +146,36 @@
     }
   },
   {
+    "type": "paren_expr",
+    "named": true,
+    "fields": {
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "source_file",
     "named": true,
-    "fields": {}
+    "fields": {
+      "exprs": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    }
   },
   {
     "type": "subscript",
@@ -199,15 +220,15 @@
     "named": false
   },
   {
+    "type": ";",
+    "named": false
+  },
+  {
     "type": "[",
     "named": false
   },
   {
     "type": "]",
-    "named": false
-  },
-  {
-    "type": "hello",
     "named": false
   },
   {

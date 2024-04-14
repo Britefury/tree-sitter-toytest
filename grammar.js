@@ -3,51 +3,55 @@ module.exports = grammar({
 
     supertypes: $ => [
         $.expression,
-        $.operator,
     ],
-  
+
     rules: {
-        // TODO: add the actual grammar rules
-        source_file: $ => 'hello',
+        // source_file: $ => $.expression,
+        source_file: $ => seq(field('exprs', $.expression), repeat(seq(';', field('exprs', $.expression)))),
 
-        op_plus: $ => '+',
-        op_mul: $ => '-',
-
-        operator: $ => choice(
-            $.op_plus,
-            $.op_mul,
+        bin_op: $ => choice(
+            prec.left(1, seq(
+                field('left', $.expression),
+                field('operator', $.op_plus),
+                field('right', $.expression)
+            )),
+            prec.left(2, seq(
+                field('left', $.expression),
+                field('operator', $.op_mul),
+                field('right', $.expression)
+            )),
         ),
 
-        bin_op: $ => seq(
-            field('left', $.expression),
-            field('operator', $.operator),
-            field('right', $.expression),
-        ),
-
-        attribute: $ => seq(
+        attribute: $ => prec(3, seq(
             field('value', $.expression),
-            '.',
+            token('.'),
             field('name', $.identifier),
-        ),
+        )),
 
-        subscript: $ => seq(
+        subscript: $ => prec(3, seq(
             field('value', $.expression),
             '[',
             field('index', $.expression),
             ']',
-        ),
+        )),
 
-        call: $ => seq(
-            field('function', $.expression),
+        call: $ => prec(3, seq(
+            field('value', $.expression),
             '(',
             optional(seq(field('arguments', $.expression), repeat(seq(',', field('arguments', $.expression))))),
             ')',
-        ),
+        )),
 
         list: $ => seq(
             '[',
             optional(seq(field('elements', $.expression), repeat(seq(',', field('elements', $.expression))))),
             ']',
+        ),
+
+        paren_expr: $ => seq(
+            '(',
+            field('value', $.expression),
+            ')',
         ),
 
         expression: $ => choice(
@@ -58,9 +62,12 @@ module.exports = grammar({
             $.subscript,
             $.call,
             $.list,
+            $.paren_expr,
         ),
 
-        identifier: $ => /[a-zA-Z_][a-zA-Z0-9_]+/,
-        integer: $ => /[0-9]+/,
+        op_plus: $ => '+',
+        op_mul: $ => '*',
+        identifier: $ => token(/[a-zA-Z_][a-zA-Z0-9_]*/),
+        integer: $ => token(/[0-9]+/),
     }
 });
