@@ -7,7 +7,7 @@ module.exports = grammar({
 
     rules: {
         // source_file: $ => $.expression,
-        source_file: $ => seq(field('exprs', $.expression), repeat(seq(';', field('exprs', $.expression)))),
+        source_file: $ => repeat1(seq(field('exprs', $.expression), ';')),
 
         bin_op: $ => choice(
             prec.left(1, seq(
