@@ -1,5 +1,5 @@
 ==================
-Identifier
+Load
 ==================
 
 abc;
@@ -8,8 +8,8 @@ def_123;
 ---
 
 (source_file
-  exprs: (identifier)
-  exprs: (identifier))
+  exprs: (load)
+  exprs: (load))
 
 ==================
 Identifier 2
@@ -20,7 +20,7 @@ abc_123;
 ---
 
 (source_file
-  exprs: (identifier))
+  exprs: (load))
 
 ==================
 Integer
@@ -43,7 +43,7 @@ abc.d;
 
 (source_file
   exprs: (attribute
-    value: (identifier)
+    value: (load)
     name: (identifier)))
 
 ==================
@@ -56,7 +56,7 @@ abc[1];
 
 (source_file
   exprs: (subscript
-    value: (identifier)
+    value: (load)
     index: (integer)))
 
 ==================
@@ -71,13 +71,13 @@ a(b, 2);
 
 (source_file
   exprs: (call
-    value: (identifier))
+    value: (load))
   exprs: (call
-    value: (identifier)
-    arguments: (identifier))
+    value: (load)
+    arguments: (load))
   exprs: (call
-    value: (identifier)
-    arguments: (identifier)
+    value: (load)
+    arguments: (load)
     arguments: (integer)))
 
 ==================
@@ -93,9 +93,9 @@ List
 (source_file
   exprs: (list)
   exprs: (list
-    elements: (identifier))
+    elements: (load))
   exprs: (list
-    elements: (identifier)
+    elements: (load)
     elements: (integer)))
 
 ==================
@@ -112,33 +112,33 @@ a + 2 * c;
 
 (source_file
   exprs: (bin_op
-    left: (identifier)
+    left: (load)
     operator: (op_mul)
     right: (integer))
   exprs: (bin_op
-    left: (identifier)
+    left: (load)
     operator: (op_plus)
     right: (integer))
   exprs: (bin_op
     left: (bin_op
-      left: (identifier)
+      left: (load)
       operator: (op_mul)
       right: (integer))
     operator: (op_plus)
-    right: (identifier))
+    right: (load))
   exprs: (bin_op
-    left: (identifier)
+    left: (load)
     operator: (op_plus)
     right: (bin_op
       left: (integer)
       operator: (op_mul)
-      right: (identifier)))
+      right: (load)))
   exprs: (bin_op
     left: (paren_expr
       value: (bin_op
-        left: (identifier)
+        left: (load)
         operator: (op_plus)
         right: (integer)))
     operator: (op_mul)
-    right: (identifier)))
+    right: (load)))
 

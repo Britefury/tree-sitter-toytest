@@ -54,9 +54,11 @@ module.exports = grammar({
             ')',
         ),
 
+        load: $ => alias($.identifier, 'load'),
+
         expression: $ => choice(
             $.integer,
-            $.identifier,
+            $.load,
             $.bin_op,
             $.attribute,
             $.subscript,

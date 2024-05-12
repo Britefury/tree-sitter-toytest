@@ -298,6 +298,15 @@
         }
       ]
     },
+    "load": {
+      "type": "ALIAS",
+      "content": {
+        "type": "SYMBOL",
+        "name": "identifier"
+      },
+      "named": false,
+      "value": "load"
+    },
     "expression": {
       "type": "CHOICE",
       "members": [
@@ -307,7 +316,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "identifier"
+          "name": "load"
         },
         {
           "type": "SYMBOL",

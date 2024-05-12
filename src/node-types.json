@@ -16,15 +16,15 @@
         "named": true
       },
       {
-        "type": "identifier",
-        "named": true
-      },
-      {
         "type": "integer",
         "named": true
       },
       {
         "type": "list",
+        "named": true
+      },
+      {
+        "type": "load",
         "named": true
       },
       {
@@ -146,6 +146,11 @@
     }
   },
   {
+    "type": "load",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "paren_expr",
     "named": true,
     "fields": {
@@ -238,6 +243,10 @@
   {
     "type": "integer",
     "named": true
+  },
+  {
+    "type": "load",
+    "named": false
   },
   {
     "type": "op_mul",
