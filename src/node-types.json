@@ -12,7 +12,15 @@
         "named": true
       },
       {
+        "type": "brace_expr",
+        "named": true
+      },
+      {
         "type": "call",
+        "named": true
+      },
+      {
+        "type": "dollar_exp",
         "named": true
       },
       {
@@ -104,6 +112,21 @@
     }
   },
   {
+    "type": "brace_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "paren_expr",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "call",
     "named": true,
     "fields": {
@@ -120,6 +143,22 @@
       "value": {
         "multiple": false,
         "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "dollar_exp",
+    "named": false,
+    "fields": {
+      "value": {
+        "multiple": false,
+        "required": false,
         "types": [
           {
             "type": "expression",
@@ -209,6 +248,10 @@
     }
   },
   {
+    "type": "$",
+    "named": false
+  },
+  {
     "type": "(",
     "named": false
   },
@@ -255,5 +298,13 @@
   {
     "type": "op_plus",
     "named": true
+  },
+  {
+    "type": "{",
+    "named": false
+  },
+  {
+    "type": "}",
+    "named": false
   }
 ]

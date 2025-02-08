@@ -54,7 +54,14 @@ module.exports = grammar({
             ')',
         ),
 
+        // Some examples that use 'alias'
         load: $ => alias($.identifier, 'load'),
+
+        _brace_expr: $ => seq('{', field('value', $.expression), '}'),
+        brace_expr: $ => alias($._brace_expr, $.paren_expr),
+
+        _dollar_expr: $=> seq('$', field('value', $.expression), '$'),
+        dollar_exp: $ => alias($._dollar_expr, 'dollar_exp'),
 
         expression: $ => choice(
             $.integer,
@@ -65,6 +72,8 @@ module.exports = grammar({
             $.call,
             $.list,
             $.paren_expr,
+            $.brace_expr,
+            $.dollar_exp,
         ),
 
         op_plus: $ => '+',

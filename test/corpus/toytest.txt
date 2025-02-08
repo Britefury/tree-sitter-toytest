@@ -142,3 +142,31 @@ a + 2 * c;
     operator: (op_mul)
     right: (load)))
 
+======
+Dollar
+======
+
+$a[1]$;
+
+---
+
+(source_file
+  exprs: (dollar_exp
+    value: (subscript
+      value: (load)
+      index: (integer))))
+
+======
+Brace
+======
+
+{a[2]};
+
+---
+
+(source_file
+  exprs: (brace_expr
+    (paren_expr
+      value: (subscript
+        value: (load)
+        index: (integer)))))
