@@ -168,12 +168,12 @@ Simple compare
 
 (source_file
   exprs: (simple_compare
-    (integer)
-    (integer))
+    left: (integer)
+    right: (integer))
   exprs: (simple_compare
-    (integer)
-    (integer))
+    left: (integer)
+    right: (integer))
   exprs: (simple_compare
-    (integer)
-    (integer)))
+    left: (integer)
+    right: (integer)))
 

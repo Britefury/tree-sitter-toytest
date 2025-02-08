@@ -64,9 +64,9 @@ module.exports = grammar({
         _not_in: $ => alias(seq('not', 'in'), 'not in'),
         _is_not: $ => alias(seq('is', 'not'), 'is not'),
         simple_compare: $ => seq(
-            $.integer,
+            field('left', $.integer),
             choice($._not_in, $._is_not),
-            $.expression
+            field('right', $.expression)
         ),
 
         expression: $ => choice(
