@@ -57,11 +57,17 @@ module.exports = grammar({
         // Some examples that use 'alias'
         load: $ => alias($.identifier, 'load'),
 
+        // We construct an alias in the definition of `expression` below, in which we re-use `paren_expr`
         _brace_expr: $ => seq('{', field('value', $.expression), '}'),
-        brace_expr: $ => alias($._brace_expr, $.paren_expr),
 
-        _dollar_expr: $=> seq('$', field('value', $.expression), '$'),
-        dollar_expr: $ => alias($._dollar_expr, 'dollar_expr'),
+        // Alias constant text to a named string
+        _not_this: $ => alias(seq('not', 'this'), 'not_this'),
+        _or_that: $ => alias(seq('or', 'that'), 'or_that'),
+        two_words_expr: $ => seq(
+            $.integer,
+            choice($._not_this, $._or_that),
+            $.integer,
+        ),
 
         expression: $ => choice(
             $.integer,
@@ -72,8 +78,8 @@ module.exports = grammar({
             $.call,
             $.list,
             $.paren_expr,
-            $.brace_expr,
-            $.dollar_expr,
+            alias($._brace_expr, $.paren_expr),
+            $.two_words_expr
         ),
 
         op_plus: $ => '+',

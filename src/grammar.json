@@ -328,44 +328,67 @@
         }
       ]
     },
-    "brace_expr": {
+    "_not_this": {
       "type": "ALIAS",
       "content": {
-        "type": "SYMBOL",
-        "name": "_brace_expr"
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "not"
+          },
+          {
+            "type": "STRING",
+            "value": "this"
+          }
+        ]
       },
-      "named": true,
-      "value": "paren_expr"
+      "named": false,
+      "value": "not_this"
     },
-    "_dollar_expr": {
+    "_or_that": {
+      "type": "ALIAS",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "or"
+          },
+          {
+            "type": "STRING",
+            "value": "that"
+          }
+        ]
+      },
+      "named": false,
+      "value": "or_that"
+    },
+    "two_words_expr": {
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "$"
+          "type": "SYMBOL",
+          "name": "integer"
         },
         {
-          "type": "FIELD",
-          "name": "value",
-          "content": {
-            "type": "SYMBOL",
-            "name": "expression"
-          }
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_not_this"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_or_that"
+            }
+          ]
         },
         {
-          "type": "STRING",
-          "value": "$"
+          "type": "SYMBOL",
+          "name": "integer"
         }
       ]
-    },
-    "dollar_expr": {
-      "type": "ALIAS",
-      "content": {
-        "type": "SYMBOL",
-        "name": "_dollar_expr"
-      },
-      "named": false,
-      "value": "dollar_expr"
     },
     "expression": {
       "type": "CHOICE",
@@ -403,12 +426,17 @@
           "name": "paren_expr"
         },
         {
-          "type": "SYMBOL",
-          "name": "brace_expr"
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_brace_expr"
+          },
+          "named": true,
+          "value": "paren_expr"
         },
         {
           "type": "SYMBOL",
-          "name": "dollar_expr"
+          "name": "two_words_expr"
         }
       ]
     },

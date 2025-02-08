@@ -143,20 +143,6 @@ a + 2 * c;
     right: (load)))
 
 ======
-Dollar
-======
-
-$a[1]$;
-
----
-
-(source_file
-  exprs: (dollar_expr
-    value: (subscript
-      value: (load)
-      index: (integer))))
-
-======
 Brace
 ======
 
@@ -165,8 +151,29 @@ Brace
 ---
 
 (source_file
-  exprs: (brace_expr
-    (paren_expr
-      value: (subscript
-        value: (load)
-        index: (integer)))))
+  exprs: (paren_expr
+    value: (subscript
+      value: (load)
+      index: (integer))))
+
+========
+Not This
+========
+
+1 not this 2;
+1 not    this 2;
+1 or that 2;
+
+---
+
+(source_file
+  exprs: (two_words_expr
+    (integer)
+    (integer))
+  exprs: (two_words_expr
+    (integer)
+    (integer))
+  exprs: (two_words_expr
+    (integer)
+    (integer)))
+
