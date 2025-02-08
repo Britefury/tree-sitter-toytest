@@ -32,11 +32,11 @@
         "named": true
       },
       {
-        "type": "subscript",
+        "type": "simple_compare",
         "named": true
       },
       {
-        "type": "two_words_expr",
+        "type": "subscript",
         "named": true
       }
     ]
@@ -171,6 +171,21 @@
     }
   },
   {
+    "type": "simple_compare",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "source_file",
     "named": true,
     "fields": {
@@ -213,21 +228,6 @@
     }
   },
   {
-    "type": "two_words_expr",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "integer",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "(",
     "named": false
   },
@@ -264,11 +264,15 @@
     "named": true
   },
   {
+    "type": "is_not",
+    "named": false
+  },
+  {
     "type": "load",
     "named": false
   },
   {
-    "type": "not_this",
+    "type": "not_in",
     "named": false
   },
   {
@@ -278,10 +282,6 @@
   {
     "type": "op_plus",
     "named": true
-  },
-  {
-    "type": "or_that",
-    "named": false
   },
   {
     "type": "{",

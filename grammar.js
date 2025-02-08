@@ -61,12 +61,12 @@ module.exports = grammar({
         _brace_expr: $ => seq('{', field('value', $.expression), '}'),
 
         // Alias constant text to a named string
-        _not_this: $ => alias(seq('not', 'this'), 'not_this'),
-        _or_that: $ => alias(seq('or', 'that'), 'or_that'),
-        two_words_expr: $ => seq(
+        _not_in: $ => alias(seq('not', 'in'), 'not_in'),
+        _is_not: $ => alias(seq('is', 'not'), 'is_not'),
+        simple_compare: $ => seq(
             $.integer,
-            choice($._not_this, $._or_that),
-            $.integer,
+            choice($._not_in, $._is_not),
+            $.expression
         ),
 
         expression: $ => choice(
@@ -79,7 +79,7 @@ module.exports = grammar({
             $.list,
             $.paren_expr,
             alias($._brace_expr, $.paren_expr),
-            $.two_words_expr
+            $.simple_compare
         ),
 
         op_plus: $ => '+',

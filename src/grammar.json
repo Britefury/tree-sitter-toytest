@@ -328,7 +328,7 @@
         }
       ]
     },
-    "_not_this": {
+    "_not_in": {
       "type": "ALIAS",
       "content": {
         "type": "SEQ",
@@ -339,32 +339,32 @@
           },
           {
             "type": "STRING",
-            "value": "this"
+            "value": "in"
           }
         ]
       },
       "named": false,
-      "value": "not_this"
+      "value": "not_in"
     },
-    "_or_that": {
+    "_is_not": {
       "type": "ALIAS",
       "content": {
         "type": "SEQ",
         "members": [
           {
             "type": "STRING",
-            "value": "or"
+            "value": "is"
           },
           {
             "type": "STRING",
-            "value": "that"
+            "value": "not"
           }
         ]
       },
       "named": false,
-      "value": "or_that"
+      "value": "is_not"
     },
-    "two_words_expr": {
+    "simple_compare": {
       "type": "SEQ",
       "members": [
         {
@@ -376,17 +376,17 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "_not_this"
+              "name": "_not_in"
             },
             {
               "type": "SYMBOL",
-              "name": "_or_that"
+              "name": "_is_not"
             }
           ]
         },
         {
           "type": "SYMBOL",
-          "name": "integer"
+          "name": "expression"
         }
       ]
     },
@@ -436,7 +436,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "two_words_expr"
+          "name": "simple_compare"
         }
       ]
     },

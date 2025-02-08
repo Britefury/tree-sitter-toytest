@@ -156,24 +156,24 @@ Brace
       value: (load)
       index: (integer))))
 
-========
-Not This
-========
+==============
+Simple compare
+==============
 
-1 not this 2;
-1 not    this 2;
-1 or that 2;
+1 not in 2;
+1 not    in 2;
+1 is not 2;
 
 ---
 
 (source_file
-  exprs: (two_words_expr
+  exprs: (simple_compare
     (integer)
     (integer))
-  exprs: (two_words_expr
+  exprs: (simple_compare
     (integer)
     (integer))
-  exprs: (two_words_expr
+  exprs: (simple_compare
     (integer)
     (integer)))
 
