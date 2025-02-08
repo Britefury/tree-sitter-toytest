@@ -61,7 +61,7 @@ module.exports = grammar({
         brace_expr: $ => alias($._brace_expr, $.paren_expr),
 
         _dollar_expr: $=> seq('$', field('value', $.expression), '$'),
-        dollar_exp: $ => alias($._dollar_expr, 'dollar_exp'),
+        dollar_expr: $ => alias($._dollar_expr, 'dollar_expr'),
 
         expression: $ => choice(
             $.integer,
@@ -73,7 +73,7 @@ module.exports = grammar({
             $.list,
             $.paren_expr,
             $.brace_expr,
-            $.dollar_exp,
+            $.dollar_expr,
         ),
 
         op_plus: $ => '+',

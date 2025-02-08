@@ -358,14 +358,14 @@
         }
       ]
     },
-    "dollar_exp": {
+    "dollar_expr": {
       "type": "ALIAS",
       "content": {
         "type": "SYMBOL",
         "name": "_dollar_expr"
       },
       "named": false,
-      "value": "dollar_exp"
+      "value": "dollar_expr"
     },
     "expression": {
       "type": "CHOICE",
@@ -408,7 +408,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "dollar_exp"
+          "name": "dollar_expr"
         }
       ]
     },

@@ -151,7 +151,7 @@ $a[1]$;
 ---
 
 (source_file
-  exprs: (dollar_exp
+  exprs: (dollar_expr
     value: (subscript
       value: (load)
       index: (integer))))
