@@ -344,7 +344,7 @@
         ]
       },
       "named": false,
-      "value": "not_in"
+      "value": "not in"
     },
     "_is_not": {
       "type": "ALIAS",
@@ -362,7 +362,7 @@
         ]
       },
       "named": false,
-      "value": "is_not"
+      "value": "is not"
     },
     "simple_compare": {
       "type": "SEQ",

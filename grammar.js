@@ -61,8 +61,8 @@ module.exports = grammar({
         _brace_expr: $ => seq('{', field('value', $.expression), '}'),
 
         // Alias constant text to a named string
-        _not_in: $ => alias(seq('not', 'in'), 'not_in'),
-        _is_not: $ => alias(seq('is', 'not'), 'is_not'),
+        _not_in: $ => alias(seq('not', 'in'), 'not in'),
+        _is_not: $ => alias(seq('is', 'not'), 'is not'),
         simple_compare: $ => seq(
             $.integer,
             choice($._not_in, $._is_not),

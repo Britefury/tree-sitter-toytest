@@ -264,7 +264,7 @@
     "named": true
   },
   {
-    "type": "is_not",
+    "type": "is not",
     "named": false
   },
   {
@@ -272,7 +272,7 @@
     "named": false
   },
   {
-    "type": "not_in",
+    "type": "not in",
     "named": false
   },
   {
