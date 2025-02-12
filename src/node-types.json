@@ -158,6 +158,16 @@
     "type": "paren_expr",
     "named": true,
     "fields": {
+      "key": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
       "value": {
         "multiple": false,
         "required": true,
@@ -252,6 +262,10 @@
   },
   {
     "type": ".",
+    "named": false
+  },
+  {
+    "type": ":",
     "named": false
   },
   {

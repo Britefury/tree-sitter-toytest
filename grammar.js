@@ -58,7 +58,7 @@ module.exports = grammar({
         load: $ => alias($.identifier, 'load'),
 
         // We construct an alias in the definition of `expression` below, in which we re-use `paren_expr`
-        _brace_expr: $ => seq('{', field('value', $.expression), '}'),
+        _brace_expr: $ => seq('{', field('key', $.identifier), ':', field('value', $.expression), '}'),
 
         // Alias constant text to a named string
         _not_in: $ => alias(seq('not', 'in'), 'not in'),

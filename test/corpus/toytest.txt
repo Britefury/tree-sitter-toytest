@@ -146,12 +146,13 @@ a + 2 * c;
 Brace
 ======
 
-{a[2]};
+{b: a[2]};
 
 ---
 
 (source_file
   exprs: (paren_expr
+    key: (identifier)
     value: (subscript
       value: (load)
       index: (integer))))
